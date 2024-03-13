@@ -100,7 +100,35 @@ function drawBall(ballX, ballY){
 };
 function checkCollision(){
      if(ballY <= 0 + ballRadius){
+        ballYDirection *= -1;if(ballY >= gameHeight - ballRadius){
         ballYDirection *= -1;
+    }
+    if(ballX <= 0){
+        player2Score+=1;
+        updateScore();
+        createBall();
+        return;
+    }
+    if(ballX >= gameWidth){
+        player1Score+=1;
+        updateScore();
+        createBall();
+        return;
+    }
+    if(ballX <= (paddle1.x + paddle1.width + ballRadius)){
+        if(ballY > paddle1.y && ballY < paddle1.y + paddle1.height){
+            ballX = (paddle1.x + paddle1.width) + ballRadius; // if ball gets stuck
+            ballXDirection *= -1;
+            ballSpeed += 1;
+        }
+    }
+    if(ballX >= (paddle2.x - ballRadius)){
+        if(ballY > paddle2.y && ballY < paddle2.y + paddle2.height){
+            ballX = paddle2.x - ballRadius; // if ball gets stuck
+            ballXDirection *= -1;
+            ballSpeed += 1;
+        }
+    }
 };
 function changeDirection(event){
     const keyPressed = event.keyCode;
