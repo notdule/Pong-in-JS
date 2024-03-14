@@ -99,8 +99,10 @@ function drawBall(ballX, ballY){
     ctx.fill();
 };
 function checkCollision(){
-     if(ballY <= 0 + ballRadius){
-        ballYDirection *= -1;if(ballY >= gameHeight - ballRadius){
+      if(ballY <= 0 + ballRadius){
+        ballYDirection *= -1;
+    }
+    if(ballY >= gameHeight - ballRadius){
         ballYDirection *= -1;
     }
     if(ballX <= 0){
