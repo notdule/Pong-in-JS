@@ -161,6 +161,8 @@ function changeDirection(event){
             break;
     }
 };
-function updateScore(){};
+function updateScore(){
+     scoreText.textContent = `${player1Score} : ${player2Score}`;
+};
 function resetGame(){};
 
